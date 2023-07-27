@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .myDiv {
+    border: 5px outset red;
+    background-color: lightblue;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-right:803px;
+    
+
+        }
+</style>
 </head>
 <body>
+    <div class="myDiv">
     <form method="post">
-        Name: <input type="text" name="Name"><br>
-        Last Name: <input type="text" name="Surname"><br>
-        Email address: <input type="text" name="Email">
+        Name: <input type="text" name="Name" required><br>
+        Last Name: <input type="text" name="Surname" required><br>
+        Email address: <input type="text" name="Email" required>
         <p id="buttons"><input type="submit">
 
     </form>
+    </div>
 </body>
 </html>
