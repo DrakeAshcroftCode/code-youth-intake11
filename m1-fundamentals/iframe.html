@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            background-color: aliceblue;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        form {
+            display: inline-block;
+            border-style:double;
+            background-color: aliceblue;
+        }
+
+        label {
+            display: inline-block;
+            width: 140px;
+            position: relative;
+        }
+
+        input[type=submit] {
+            width: 100px;
+        }
+
+        label.required:after {
+            content: "*";
+            color: red;
+            position: absolute;
+            top: 0;
+            right: 0px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1><center>Sample MP3/MP4 Files</center></h1>
+
+    <center>
+        <table>
+            <td><audio controls>
+                <source src="noise.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio></td>
+        </table>
+    </center>
+    <audio controls>
+        <source src="noise.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio> <br>
+    <video controls width="640" height="360">
+        <source src="https://file-examples.com/storage/fee3d1095964bab199aee29/2017/04/file_example_MP4_480_1_5MG.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <br>
+    <br>
+    <br>
+    <table>
+        <caption>Table with merged cells</caption>
+        <tr>
+            <th rowspan="2"></th>
+            <th colspan="2">Average</th>
+            <th rowspan="2">Red eyes</th>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>weight</td>
+        </tr>
+        <tr>
+            <td>Male</td>
+            <td>1.9</td>
+            <td>0.003</td>
+            <td>40%</td>
+        </tr>
+        <tr>
+            <td>Female</td>
+            <td>1.7</td>
+            <td>0.002</td>
+            <td>43%</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <center>
+        <div class="required">
+            
+            <form>
+                <h1>Book Your Flight</h1>
+                <label for="departure-date" class="required">Departure Date:</label>
+                <input type="date" id="departure-date" name="departure-date"><br><br>
+                <label for="return-date" class="required">Return Date:</label>
+                <input type="date" id="return-date" name="return-date"><br><br>
+                <label for="passengers" class="required">Number of Passengers:</label>
+                <input type="number" id="passengers" name="passengers"><br><br>
+                <label for="room-type">Type of Room/Ticket:</label>
+                <select id="room-type" name="room-type">
+                    <option value="standard">Standard</option>
+                    <option value="deluxe">Deluxe</option>
+                    <option value="suite">Suite</option>
+                </select><br><br>
+                <label for="class">Class:</label>
+                <select id="class" name="class">
+                    <option value="economy">Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First</option>
+                    <input type="radio" id="checkbox">Make it to destination alive</input>
+                    <input type="radio" id="checkbox2">Doesn't matter</input>
+                </select><br><br>
+
+                <iframe src="https://www.google.com/maps/d/embed?mid=1aJjojR4Vc9SLPwc1V5ZtGUUzkAw&hl=en&ehbc=2E312F" width="640" height="480"></iframe>
+                <br>
+                <input type="submit" value="Book">
+            </form>
+        </div>
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>MP3 Player</th>
+            <th>Description</th>
+            <th>Download</th>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="audio1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </td>
+            <td>Placeholder description for audio1.mp3</td>
+            <td><a href="audio1.mp3" download>Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="audio2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </td>
+            <td>Placeholder description for audio2.mp3</td>
+            <td><a href="audio2.mp3" download>Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="audio3.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </td>
+            <td>Placeholder description for audio3.mp3</td>
+            <td><a href="audio3.mp3" download>Download</a></td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="audio4.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </td>
+            <td>Placeholder description for audio4.mp3</td>
+            <td><a href="audio4.mp3" download>Download</a></td>
+        </tr>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="audio5.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>Placeholder description for audio5.mp3</td>
+          <td><a href="audio5.mp3" download>Download</a></td>
+        </tr>
+      
+      </table>
+      
+
+      
+</body>
+</html>
