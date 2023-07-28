@@ -1,1 +1,3 @@
-
+Flowerpage - Basic webpage to demonstrate displaying images, internal linking, and file structuring.
+Forms - Various webpages/assignments that make use of the form element in HTML. Needs more organizing.
+Omelet.html - Super basic webpage displaying a picture of an omelet, and a mock recipe. Basic styling applied.
