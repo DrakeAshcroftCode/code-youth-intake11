@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" cellpadding="5px" cellspacing="4px">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+            <th>Networth</th>
+        </tr>
+        <tr>
+            <td>ABC Ltd</td>
+            <td>Maria Anders</td>
+            <td>Canada</td>
+            <td id="networth1">1000</td>
+        </tr>
+        <tr>
+            <td>XYZ ltd.</td>
+            <td>Alena</td>
+            <td>US</td>
+            <td id="networth2">1300</td>
+        </tr>
+        <tr>
+            <td colspan="3">Total worth</td>
+            <td id="myText"></td>
+        </tr>
+    </table>
+
+    <script>
+        function myFunction() {
+            var networth1 = parseInt(document.getElementById("networth1").textContent);
+            var networth2 = parseInt(document.getElementById("networth2").textContent);
+            var number = networth1 + networth2;
+            document.getElementById("myText").innerHTML = number;
+        }
+        myFunction();
+    </script>
+</body>
+</html>
