@@ -1,4 +1,13 @@
+.colors {
+    z-index: 1;
+    position:absolute;
+}
+.shadows {
+    z-index: 1;
+    position:absolute;
+}
 .red {
+
     width:75px;
     height:100px;
     background-color:red;
@@ -19,10 +28,47 @@
     background-color:blue;
 }
 .shadow {
+
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:30px;
-    width:100px;
-    height:100px;
+    font-size: 38px;
+    width: 25px;
+    height:38px;
+    background-color:orangered;
+    box-shadow:5px 5px;
+}
+.shadow2 {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 38px;
+    width: 25px;
+    height:38px;
+    background-color:orangered;
+    box-shadow:5px 5px;
+}
+.shadow3 {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 38px;
+    width: 25px;
+    height:38px;
+    background-color:orangered;
+    box-shadow:5px 5px;
+}
+.shadow4 {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 38px;
+    width: 25px;
+    height:38px;
+    background-color:orangered;
+    box-shadow:5px 5px;
+}
+.shadow5 {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 38px;
+    width: 25px;
+    height:38px;
     background-color:orangered;
     box-shadow:5px 5px;
 }
