@@ -18,3 +18,11 @@
     height:100px;
     background-color:blue;
 }
+.shadow {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:30px;
+    width:100px;
+    height:100px;
+    background-color:orangered;
+    box-shadow:5px 5px;
+}
