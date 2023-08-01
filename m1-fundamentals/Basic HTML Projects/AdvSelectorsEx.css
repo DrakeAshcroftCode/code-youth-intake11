@@ -1,0 +1,32 @@
+ /* Ex:3 */
+ #pageNav a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Ex:4 */
+.navLinks {
+    font-family: sans-serif;
+    font-size: 26px;
+}
+
+/* Ex:5 */
+.hoverMe:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+/* Ex:6 */
+.hoverMe:active {
+    background-color: yellow;
+}
+
+/* Ex:7 */
+.listOfFish li:nth-child(odd) {
+    background-color: red;
+}
+
+/* Ex:8 */
+.listOfFish li:hover {
+    font-size:32px;
+}
