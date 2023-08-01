@@ -1,3 +1,6 @@
-#parent p{
-    color:red;
+#parent > .child {
+    font-weight: bold;
+}
+#parent > button.child {
+    border: none;
 }
