@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Google</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 400px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #fff;
+        }
+
+        .bottomNav {
+            background-color: lightgrey;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+            font-weight: bold;
+        }
+
+        .bottomNav p {
+            padding: 5px 10px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .bottom-container {
+            position: flex;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .link-wrapper {
+            display: flex;
+            align-items: center;
+            background-color:lightgrey;
+            width:100%;
+            padding-left:200px;
+        }
+        .rightLinks {
+            padding-left:80px;
+        }
+
+        .link-wrapper a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #666;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .nav .rightnav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav img {
+            width: 35px;
+            height: 33px;
+        }
+
+        .logo {
+            width: 272px;
+            height: 92px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-box input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-buttons {
+            margin-top: 10px;
+        }
+
+        .search-buttons input[type="submit"] {
+            margin-right: 10px;
+            padding: 6px 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .links {
+            margin-top: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #666;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="leftnav">
+            <a href="#">About</a>
+            <a href="#">Store</a>
+        </div>
+        <div class="rightnav">
+            <a href="#">Gmail</a>
+            <a href="#">Images</a>
+            <img src="duck.jpg">
+        </div>
+    </div>
+    <div class="container">
+        <img src="google_logo.png" alt="Google Logo" class="logo">
+        <div class="search-box">
+            <input type="text" placeholder="Search Google or type a URL">
+            <div class="search-buttons">
+                <input type="submit" value="Google Search">
+                <input type="submit" value="I'm Feeling Lucky">
+            </div>
+        </div>
+        <p class="links">
+            <a href="#">About</a>
+            <a href="#">Store</a>
+        </p>
+    </div>
+    <div class="bottom-container">
+    <div class="bottomNav">
+        <p>Canada</p>
+    </div>
+    <div class="link-wrapper">
+        <a href="#">Advertising</a>
+        <a href="#">Business</a>
+        <a href="#">How Search Works</a>
+        <div class="rightLinks">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Settings</a>
+        </div>
+   
+    </div>
+</div>
+</body>
+</html>
