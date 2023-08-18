@@ -182,3 +182,27 @@ for (let i = reverserino.length - 1; i >= 0; i--) {
 }
 
 console.log(reversed);
+
+// 1. Create an array of four numbers
+let numericals = [1, 2, 3, 4];
+
+// 2. Create an array of strings
+let nominals = ["Hannan", "Kamal", "Braedon", "Marina"];
+
+// 3. Console.log the 4th item in the array
+console.log(nominals[3]);
+
+// 4. Using a for loop, console.log every element in this array
+let sentenceArray = ["The","quick","brown","fox","jumps","over",'the',"lazy","dog"]
+for (let i = 0; i < sentenceArray.length; i++) {
+    console.log(sentenceArray[i]);
+}
+
+// 5. Loop through the array until you find the word "language", when you find it, console.log its index in the array
+let words = ["A", "sentence", "is", "the", "basic", "unit", "of", "language", "which", "expresses", "a", "complete", "thought"];
+for (let i = 0; i < words.length; i++) {
+    if (words[i] === "language") {
+        console.log("Index of 'language':", i);
+        break; // Stop the loop once you've found the word
+    }
+}
