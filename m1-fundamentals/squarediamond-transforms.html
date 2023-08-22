@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2 {
+            display: inline-block;
+            margin: 20px;
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2::before,
+        h2::after {
+            content: '';
+            position: absolute;
+            border: solid 2px black;
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: -1;
+        }
+
+        h2::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .square {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            border: 2px solid #000;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .square::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: red;
+            transform-origin: center;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .square:hover::before {
+            transform: scale(1);
+        }
+
+        .square p {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hello</h2>
+    <h2>hola</h2>
+    <h2>bonjour</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="square">
+        <p>Hover Me</p>
+    </div>
+</body>
+</html>
