@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // Create a system for an online store.
+        // Use the provided objects and create functions that will, add an item to the cart, calculate the tax, calculate the total, remove an item from the cart, and checkout.
+        // Anytime the user checks out make sure to remove the quantity from the items stock
+        // I have created the addItems function to use as an example for the other functions.
+
+        let store = {
+            availableItems: [
+                {
+                    name: "skateboard",
+                    id: 1,
+                    price: 5.99,
+                    stock: 544
+                },
+                {
+                    name: "celery",
+                    id: 13,
+                    price: 1.99,
+                    stock: 13
+                },
+                {
+                    name: "bread",
+                    id: 3,
+                    price: 3.59,
+                    stock: 47
+                },
+                {
+                    name: "pumpkin",
+                    id: 14,
+                    price: 10.98,
+                    stock: 33
+                },
+                {
+                    name: "candy",
+                    id: 26,
+                    price: 1.99,
+                    stock: 400
+                }
+            ]
+        }
+
+        let cart = {
+            items: [
+                {
+                    name: "skateboard",
+                    id: 1,
+                    price: 5.99,
+                    quantity: 1
+                },
+                {
+                    name: "celery",
+                    id: 13,
+                    price: 1.99,
+                    quantity: 5
+                },
+                {
+                    name: "bread",
+                    id: 3,
+                    price: 3.59,
+                    quantity: 2
+                }
+            ],
+            total: 0,
+            grandTotal: 0
+        }
+
+        function addItem(itemName, quantity = 1) {
+            //Finding the item in the store object
+            let item = store.availableItems.find(element => element.name == itemName);
+
+            // Check to see if the item is already in the cart
+            let inCart = cart.items.find(element => element.name == itemName);
+
+            if (inCart) {
+                //If the item is already in the cart, increase its quantity
+                inCart.quantity += quantity
+            } else {
+                //If the item is not in the cart, Create a new object for that item and push it into the cart
+                let newItem = {
+                    name: item.name,
+                    id: item.id,
+                    price: item.price,
+                    quantity: quantity
+                }
+                cart.items.push(newItem)
+            }
+        }
+       
+
+    </script>
+
+
+</body>
+
+</html>

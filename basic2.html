@@ -1,39 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="intro2.css" />
-    <title>Document</title>
+    <title>Online Store</title>
 </head>
+
 <body>
-    <div class="colors">
-    <div class="red"></div>
-    <div class="green"></div>
-    <div class="yellow"></div>
-    <div class="blue"></div>
-</div>
-<div class="shadows">
-    <div class="shadow" >
-        <p>D 
-        </p>
+    <h1>Online Store</h1>
+    <div>
+        <h2>Available Items</h2>
+        <ul id="availableItemsList"></ul>
     </div>
-    <div class="shadow2">
-        <p>R
-        </p>
+    <div>
+        <h2>Cart</h2>
+        <ul id="cartItemList"></ul>
+        <p>Total: $<span id="cartTotal">0</span></p>
+        <p>Grand Total: $<span id="cartGrandTotal">0</span></p>
     </div>
-    <div class="shadow3">
-        <p>A
-        </p>
-    </div>
-    <div class="shadow4">
-        <p>K
-        </p>
-    </div>
-    <div class="shadow5">
-        <p>E
-        </p>
-    </div>
-</div>
+    <button onclick="addItemToCart('skateboard')">Add Skateboard to Cart</button>
+    <button onclick="addItemToCart('celery')">Add Celery to Cart</button>
+    <button onclick="addItemToCart('bread')">Add Bread to Cart</button>
+    <button onclick="removeItemFromCart('skateboard')">Remove Skateboard from Cart</button>
+    <button onclick="removeItemFromCart('celery')">Remove Celery from Cart</button>
+    <button onclick="removeItemFromCart('bread')">Remove Bread from Cart</button>
+    <button onclick="checkout()">Checkout</button>
+
+    <script>
+         let store = {
+            availableItems: [
+                {
+                    name: "skateboard",
+                    id: 1,
+                    price: 5.99,
+                    stock: 544
+                },
+                {
+                    name: "celery",
+                    id: 13,
+                    price: 1.99,
+                    stock: 13
+                },
+                {
+                    name: "bread",
+                    id: 3,
+                    price: 3.59,
+                    stock: 47
+                },
+                {
+                    name: "pumpkin",
+                    id: 14,
+                    price: 10.98,
+                    stock: 33
+                },
+                {
+                    name: "candy",
+                    id: 26,
+                    price: 1.99,
+                    stock: 400
+                }
+            ]
+        }
+
+        let cart = {
+            items: [
+                {
+                    name: "skateboard",
+                    id: 1,
+                    price: 5.99,
+                    quantity: 1
+                },
+                {
+                    name: "celery",
+                    id: 13,
+                    price: 1.99,
+                    quantity: 5
+                },
+                {
+                    name: "bread",
+                    id: 3,
+                    price: 3.59,
+                    quantity: 2
+                }
+            ],
+            total: 0,
+            grandTotal: 0
+        }
+
+        function addItemToCart(itemName, quantity = 1) {
+            let item = store.availableItems.find(element => element.name === itemName);
+            let inCart = cart.items.find(element => element.name === itemName);
+
+            if (item) {
+        if (item.stock >= quantity) {
+            if (inCart) {
+                inCart.quantity += quantity;
+            } else {
+                let newItem = {
+                    name: item.name,
+                    id: item.id,
+                    price: item.price,
+                    quantity: quantity
+                };
+                cart.items.push(newItem);
+            }
+
+            item.stock -= quantity;
+            updateCartDisplay();
+        } else {
+            console.log(`Insufficient stock for ${itemName}`);
+        }
+       } else {
+        console.log("Item not found in store.");
+    }
+}
+ //takes name of item and amount of item to be removes as arguements, if no amount provided it will default to 1.
+ function removeItemFromCart(itemName, quantity = 1) {
+    let cartItem = cart.items.find(element => element.name === itemName);
+
+    if (cartItem) {
+        if (cartItem.quantity <= quantity) {
+            cart.items = cart.items.filter(item => item.name !== itemName);
+        } else {
+            cartItem.quantity -= quantity;
+            let storeItem = store.availableItems.find(item => item.name === itemName);
+            if (storeItem) {
+                storeItem.stock += quantity; // Update the stock of the removed item
+            } else {
+                console.log(`Item not found in store: ${itemName}`);
+            }
+        }
+
+        cart.total -= cartItem.price * quantity;
+        cart.grandTotal = cart.total + calculateTax(cart.total);
+
+        updateCartDisplay();
+    } else {
+        console.log("Item not found in cart.");
+    }
+}
+
+        function checkout() {
+            for (let cartItem of cart.items) {
+                let storeItem = store.availableItems.find(item => item.id === cartItem.id);
+
+                if (storeItem) {
+                    if (cartItem.quantity <= storeItem.stock) {
+                        storeItem.stock -= cartItem.quantity;
+                    } else {
+                        console.log(`Insufficient stock for ${cartItem.name}`);
+                    }
+                } else {
+                    console.log(`Item not found in store: ${cartItem.name}`);
+                }
+            }
+
+            cart.items = [];
+            cart.total = 0;
+            cart.grandTotal = 0;
+            updateCartDisplay();
+        }
+
+        function calculateTax(subtotal) {
+            const taxRate = 0.13;
+            return subtotal * taxRate;
+        }
+
+        function updateCartDisplay() {
+            // Update the HTML to display cart
+            const cartItemList = document.getElementById("cartItemList");
+            const cartTotal = document.getElementById("cartTotal");
+            const cartGrandTotal = document.getElementById("cartGrandTotal");
+
+            cartItemList.innerHTML = "";
+            let subtotal = 0;
+
+            for (let cartItem of cart.items) {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${cartItem.name} (Quantity: ${cartItem.quantity}) - $${(cartItem.price * cartItem.quantity).toFixed(2)}`;
+                cartItemList.appendChild(listItem);
+                subtotal += cartItem.price * cartItem.quantity;
+            }
+
+            const tax = calculateTax(subtotal);
+            const total = subtotal + tax;
+
+            cartTotal.textContent = subtotal.toFixed(2);
+            cartGrandTotal.textContent = total.toFixed(2);
+        }
+
+        updateCartDisplay();
+    </script>
 </body>
+
 </html>
