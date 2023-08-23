@@ -1,31 +1,115 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ashcroft Encyclopedia of Symbols</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Ashcroft Encyclopedia of Symbols</h1>
-    <nav>
-      <ul>
-        <li><a href="#major-religions">Major World Religions</a></li>
-        <li><a href="#other-religions">Other Religions</a></li>
-        <li><a href="#secular">Secular</a></li>
-        <li><a href="#obscure">Obscure</a></li>
-      </ul>
-    </nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Layout</title>
+    <style>        
 
-    <h2 id="major-religions">Major World Religions</h2>
-   
+          .parent {
+            border: 1px solid;
+            width: 750px; /* Adjust this value based on your preference */
+            height: 120px; /* Adjust this value based on your preference */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    <h2 id="other-religions">Other Religions</h2>
-  
+        .child {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    box-sizing: border-box;
+    background-color: black;
+}
 
-    <h2 id="secular">Secular</h2>
-    
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    <h2 id="obscure">Obscure</h2>
-    
-  </body>
+        .upper-left-lower-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.three-squares {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.four-squares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.five-squares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.six-squares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <!-- One black square in the center -->
+        <div class="center">
+            <div class="child"></div>
+        </div>
+
+        <!-- One black square in the upper left corner and one in the lower right corner -->
+        <div class="upper-left-lower-right">
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+
+        <!-- Three squares - one in the upper left corner, one in the bottom right, and one in the middle -->
+        <div class="three-squares">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+
+        <!-- Four black squares - one in each corner -->
+        <div class="four-squares">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+
+        <!-- Five black squares - one in each corner and one in the center -->
+        <div class="five-squares">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+
+        <!-- Six black squares - three on each side -->
+        <div class="six-squares">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+</body>
 </html>

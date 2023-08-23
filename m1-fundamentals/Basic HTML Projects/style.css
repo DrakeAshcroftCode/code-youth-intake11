@@ -1,39 +1,55 @@
 body {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #f5f5dc;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 36px;
-    color: #4b0082;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  nav li {
-    float: left;
-  }
-  
-  nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  nav li a:hover {
-    background-color: #111;
-  }
-  
-  h2 {
-    font-size: 28px;
-    color: #800000;
-  }
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.dice-container {
+  display: flex;
+  width: 600px; /* Adjust this value based on your preference */
+  height: 200px; /* Adjust this value based on your preference */
+  transform-style: preserve-3d;
+  perspective: 800px; /* Adjust this value to change the perspective */
+}
+
+.side {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+}
+
+/* Specific positioning for each side */
+.side:nth-child(1) {
+  transform: rotateX(0deg) translateZ(50px);
+}
+
+.side:nth-child(2) {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.side:nth-child(3) {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.side:nth-child(4) {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.side:nth-child(5) {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.side:nth-child(6) {
+  transform: rotateY(180deg) translateZ(50px);
+}
