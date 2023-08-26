@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceship Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: purple;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spaceship Simulation</h1>
+    <div>
+        <p>Click the buttons to move through the spaceship:</p>
+        <button id="livingQuartersBtn">Living Quarters</button>
+        <button id="lifeSupportBtn">Life Support Room</button>
+        <button id="diningAreaBtn">Dining Area</button>
+        <button id="weaponsBtn">Weapons Room</button>
+        <button id="bridgeBtn">Bridge</button>
+        <button id="engineeringBtn">Engineering Room</button>
+    </div>
+    <div id="roomDescription"></div>
+    <div id="warningMessage"></div>
+
+    <button id="fightButton" style="display: none;" onclick="startFight()">Fight</button>
+    <button id="escapeButton" style="display: none;" onclick="attemptEscape()">Attempt Escape</button>
+    <p id="escapeChanceText">Escape Chance: <span id="escapeChance">0%</span></p>
+
+    <script>
+        // Function to define room connections
+        function livingQuarters() {
+            return ["lifeSupport", "diningArea"];
+        }
+
+        function lifeSupport() { 
+            return ["livingQuarters", "diningArea"];
+        }
+
+        function diningArea() {
+            return ["livingQuarters", "lifeSupport", "engineering", "weapons"];
+        }
+
+        function weapons() {
+            return ["diningArea", "bridge"];
+        }
+
+        function bridge() {
+            return ["weapons", "engineering"];
+        }
+
+        function engineering() {
+            return ["diningArea", "bridge"];
+        }
+
+        // Function to display room description
+        function displayRoomDescription(description) {
+            document.getElementById("roomDescription").textContent = description;
+        }
+
+        // Function to move enemy to a random room
+        function moveEnemyToRandomRoom() {
+            const currentRoom = opFor.currentRoom;
+            const connections = window[currentRoom]();
+            const randomRoomIndex = Math.floor(Math.random() * connections.length);
+            const newRoom = connections[randomRoomIndex];
+            opFor.currentRoom = newRoom;  // Update the enemy's current room
+            console.log(`Enemy moved to ${newRoom}.`);
+        }
+
+        // Function to display warning messages
+        function displayWarningMessage(message) {
+            const warningElement = document.getElementById("warningMessage");
+            warningElement.textContent = message;
+        }
+
+        // Initialize variables
+        let playerMovementCount = 0;
+        let player = {
+            currentRoom: ""
+        };
+        let opFor = {
+            currentRoom: ""
+        }
+
+        // Function to start a fight
+        function startFight() {
+            let playerWins = 0;
+            let enemyWins = 0;
+            
+            while (playerWins < 5 && enemyWins < 5) {
+                const playerRoll = Math.random() < 0.5;
+                const enemyRoll = Math.random() < 0.5;
+                
+                if (playerRoll) {
+                    playerWins++;
+                }
+                
+                if (enemyRoll) {
+                    enemyWins++;
+                }
+            }
+            
+            if (playerWins === 5) {
+                displayRoomDescription("You defeated the enemy!");
+            } else {
+                displayRoomDescription("You were defeated by the enemy!");
+            }
+        }
+
+        // Function to calculate escape chance
+        function calculateEscapeChance(room) {
+            const connections = window[room]();
+            const escapeChance = Math.min(connections.length * 20, 100);
+            document.getElementById("escapeChance").textContent = `${escapeChance}%`;
+            return escapeChance;
+        }
+
+        // Function to attempt escape
+        function attemptEscape() {
+    const escapeChance = calculateEscapeChance(player.currentRoom);
+    const escapeRoll = Math.random() * 100;
+    
+    // Update the escapeChanceText content
+    document.getElementById("escapeChanceText").textContent = `Escape Chance: ${escapeChance}%`;
+    
+    if (escapeRoll <= escapeChance) {
+        const connections = window[player.currentRoom]();
+        
+        // Select a random connecting room for the player to move
+        const randomRoomIndex = Math.floor(Math.random() * connections.length);
+        const newRoom = connections[randomRoomIndex];
+        
+        // Update player's current room
+        player.currentRoom = newRoom;
+        
+        displayRoomDescription(`You successfully escaped to ${newRoom} (${escapeChance}%).`);
+        
+        // Reset escape chance to 0% and hide buttons
+        document.getElementById("escapeChance").textContent = "0%";
+        document.getElementById("fightButton").style.display = "none";
+        document.getElementById("escapeButton").style.display = "none";
+    } else {
+        displayRoomDescription(`Escape attempt failed (${escapeChance}%).`);
+    }
+}
+
+        // Function to move to a new room
+        function moveToRoom(room) {
+            const connections = window[room]();
+            
+            if (player.currentRoom === "") {
+                player.currentRoom = room;
+                console.log(`You are now in the ${room}.`);
+            } else {
+                if (player.currentRoom === opFor.currentRoom) {
+                    displayWarningMessage("Enemy is in the same room!");
+                    
+                    // Calculate and display the escape chance based on the encounter room
+                    const escapeChance = calculateEscapeChance(room);
+                    document.getElementById("escapeChance").textContent = `${escapeChance}%`;
+
+                    // Display buttons for fight and escape
+                    document.getElementById("fightButton").style.display = "block";
+                    document.getElementById("escapeButton").style.display = "block";
+                } else {
+                    displayWarningMessage("");
+                    // Reset escape chance to 0% if enemy is not present
+                    document.getElementById("escapeChance").textContent = "0%";
+                    
+                    // Hide buttons if player and enemy are not in the same room
+                    document.getElementById("fightButton").style.display = "none";
+                    document.getElementById("escapeButton").style.display = "none";
+                }
+
+                if (connections.includes(player.currentRoom)) {
+                    player.currentRoom = room;
+                    console.log(`You moved to the ${room}.`);
+                    playerMovementCount++;
+                } else {
+                    console.log(`You cannot move directly from ${player.currentRoom} to ${room}.`);
+                }
+            }
+
+            if (playerMovementCount % 2 === 0) {
+                moveEnemyToRandomRoom();
+            }
+            
+            // Update room description
+            displayRoomDescription(`You are now in the ${player.currentRoom}.`);
+        }
+
+        // Function to start the simulation
+        function startSimulation() {
+            const rooms = ["livingQuarters", "lifeSupport", "diningArea", "weapons", "bridge", "engineering"];
+            const randomRoomIndex = Math.floor(Math.random() * rooms.length);
+            const startingRoom = rooms[randomRoomIndex];
+            
+            player.currentRoom = startingRoom;
+            opFor.currentRoom = startingRoom; // Initialize enemy's room
+            
+            console.log(`Welcome aboard the duct tape express, You start in the ${startingRoom}.`);
+            displayRoomDescription(`You are now in the ${startingRoom}.`);
+        }
+        
+        startSimulation();
+        
+        // Attach event listeners
+        document.getElementById("livingQuartersBtn").addEventListener("click", function() {
+            moveToRoom("livingQuarters");
+        });
+        
+        document.getElementById("lifeSupportBtn").addEventListener("click", function() {
+            moveToRoom("lifeSupport");
+        });
+        
+        document.getElementById("diningAreaBtn").addEventListener("click", function() {
+            moveToRoom("diningArea");
+        });
+        
+        document.getElementById("weaponsBtn").addEventListener("click", function() {
+            moveToRoom("weapons");
+        });
+        
+        document.getElementById("bridgeBtn").addEventListener("click", function() {
+            moveToRoom("bridge");
+        });
+        
+        document.getElementById("engineeringBtn").addEventListener("click", function() {
+            moveToRoom("engineering");
+        });
+    </script>
+</body>
+</html>
