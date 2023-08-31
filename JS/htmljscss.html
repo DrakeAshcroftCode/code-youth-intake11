@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #myDiv {
+    width: 300px;
+    height: 200px;
+    background-color: green;
+    padding: 20px;
+    text-align: center;
+  }
+
+  #myButton {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="myDiv">
+  <p id="myParagraph">Welcome to Code Youth</p>
+  <button id="myButton">Change</button>
+</div>
+
+<script>
+  const div = document.getElementById('myDiv');
+  const paragraph = document.getElementById('myParagraph');
+  const button = document.getElementById('myButton');
+
+  let isYellow = false;
+
+  button.addEventListener('click', () => {
+    if (isYellow) {
+      div.style.backgroundColor = 'green';
+      paragraph.textContent = 'Welcome to Code Youth';
+    } else {
+      div.style.backgroundColor = 'yellow';
+      paragraph.textContent = 'Howdy Howdy';
+    }
+    
+    isYellow = !isYellow;
+  });
+</script>
+
+</body>
+</html>
