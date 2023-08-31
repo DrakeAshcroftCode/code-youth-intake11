@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Recipes</title>
+</head>
+<body>
+    <h1>Cocktail Recipes</h1>
+    <div id="cocktail-list"></div>
+    I've spotted a small syntax issue in your provided code. It seems there is a duplicated `document.addEventListener("DOMContentLoaded", () => {` line. Here's the corrected version of the script section:
+
+    ```html
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cocktailList = document.getElementById("cocktail-list");
+    
+            // Fetch cocktail data from the API
+            fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+                .then(response => response.json())
+                .then(data => {
+                    const cocktails = data.drinks;
+    
+                    // Loop through the data and display recipes
+                    cocktails.forEach(cocktail => {
+                        const cocktailDiv = document.createElement("div");
+                        cocktailDiv.className = "cocktail";
+    
+                        const name = document.createElement("h2");
+                        name.textContent = cocktail.strDrink;
+    
+                        const ingredients = document.createElement("p");
+                        ingredients.textContent = `Ingredients: ${getCocktailIngredients(cocktail)}`;
+    
+                        const instructions = document.createElement("p");
+                        instructions.textContent = `Instructions: ${cocktail.strInstructions}`;
+    
+                        cocktailDiv.appendChild(name);
+                        cocktailDiv.appendChild(ingredients);
+                        cocktailDiv.appendChild(instructions);
+    
+                        cocktailList.appendChild(cocktailDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                });
+        });
+    
+        function getCocktailIngredients(cocktail) {
+            const ingredients = [];
+            for (let i = 1; i <= 15; i++) {
+                const ingredient = cocktail[`strIngredient${i}`];
+                const measure = cocktail[`strMeasure${i}`];
+                if (ingredient) {
+                    ingredients.push(`${measure} ${ingredient}`);
+                }
+            }
+            return ingredients.join(", ");
+        }
+    </script>
+    ```
+    
+    Please make sure to use this corrected version in your HTML file.
+</body>
+</html>
