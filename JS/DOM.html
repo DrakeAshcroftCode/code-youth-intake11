@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello</p>
+    <p>World</p>
+
+    <div id="myDiv">
+        <p class="nestedP" id="wumpwump">I don't want to be green</p>
+        <p class="nestedP">I do want to be green</p>
+    </div>
+    <table border="1" style="border-spacing: 0;">
+        <thead>
+            <tr style="background-color: orange;">
+                <th>Name</th>
+                <th>Job Title</th>
+                <th>Email Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Anna Fitzgerald</td>
+                <td>Staff Writer</td>
+                <td>example@company.com</td>
+            </tr>
+            <tr>
+                <td>John Smith</td>
+                <td>Marketing Manager</td>
+                <td>example2@company.com</td>
+            </tr>
+            <tr>
+                <td>Zendaya Grace</td>
+                <td>CEO</td>
+                <td>example2@company.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a id="google" href="https://www.google.com" target="_blank">google.com</a>
+    <script>
+        // Select all the p tags in the document and change their color to green
+        document.querySelectorAll('p').forEach(e => e.style.color = "green");
+
+        // Give the myDiv div a border that is 1px width and solid style.
+        var myDiv = document.getElementById("myDiv");
+        myDiv.style.border = "2px solid";   
+        
+        // Change the color of the p tag that says it doesn't want to be green to black
+        document.getElementById("wumpwump").style.color = "black";
+        
+        // Console.log the innerText of every p tag on this page.
+        document.querySelectorAll('p').forEach(e => console.log(e.innerText));
+
+        // Go to this page and find all of the li tags on it, https://www.w3schools.com/.
+        // Console.log the innerHTML of each element.
+        function logLiInnerHTML() {
+            const liElements = document.querySelectorAll('li');
+            liElements.forEach(li => console.log(li.innerHTML));
+        }
+        // Make the a tag in the document open google.com in a new tab when it is clicked.
+        const googleLink = document.getElementById("google");
+        googleLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.open(this.href, "_blank");
+        });
+
+       // Create a p tag that says "HELLO WORLD" and append it to the page.
+       var helloParagraph = document.createElement("p");
+    helloParagraph.textContent = "HELLO WORLD";
+    document.body.appendChild(helloParagraph);
+
+    // Create a list that counts from one to three and append it to the page
+    var numberList = document.createElement("ul");
+    for (var i = 1; i <= 3; i++) {
+        var listItem = document.createElement("li");
+        listItem.textContent = i;
+        numberList.appendChild(listItem);
+    }
+    document.body.appendChild(numberList);
+
+    // Recreate the table with DOM
+    var newTable = document.createElement("table");
+    newTable.setAttribute("border", "1");
+    newTable.style.borderSpacing = "0";
+
+    var newThead = document.createElement("thead");
+    var newTheadRow = document.createElement("tr");
+    newTheadRow.style.backgroundColor = "orange";
+
+    var headers = ["Name", "Job Title", "Email Address"];
+    for (var headerText of headers) {
+        var newTh = document.createElement("th");
+        newTh.textContent = headerText;
+        newTheadRow.appendChild(newTh);
+    }
+    newThead.appendChild(newTheadRow);
+    newTable.appendChild(newThead);
+
+    var newTbody = document.createElement("tbody");
+
+    var rowData = [
+        ["Anna Fitzgerald", "Staff Writer", "example@company.com"],
+        ["John Smith", "Marketing Manager", "example2@company.com"],
+        ["Zendaya Grace", "CEO", "example3@company.com"]
+    ];
+
+    for (var row of rowData) {
+        var newRow = document.createElement("tr");
+        for (var cellData of row) {
+            var newTd = document.createElement("td");
+            newTd.textContent = cellData;
+            newRow.appendChild(newTd);
+        }
+        newTbody.appendChild(newRow);
+    }
+    newTable.appendChild(newTbody);
+
+    document.body.appendChild(newTable);
+    </script>
+</body>
+</html>
