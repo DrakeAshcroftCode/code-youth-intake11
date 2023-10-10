@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Information</title>
+    <style>
+        #ipInfo {
+            background-color: #333; 
+            color: white; 
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="header">Click to Fetch IP Info</h1>
+    <div id="ipInfo" style="display: none;"></div>
+
+    <script>
+
+// Get references to the header and info div elements
+// Get references to the header and info div elements
+const header = document.getElementById("header");
+const ipInfoDiv = document.getElementById("ipInfo");
+
+// Add a click event listener to the header
+header.addEventListener("click", async () => {
+  try {
+    const response = await fetch("http://ip-api.com/json");
+    const data = await response.json();
+
+    const formattedInfo = `
+      <p>ip: "${data.query}"</p>
+      <p>hostname: "${data.hostname}"</p>
+      <p>city: "${data.city}"</p>
+      <p>region: "${data.regionName}"</p>
+      <p>country: "${data.country}"</p>
+      <p>loc: "${data.lat}, ${data.lon}"</p>
+      <p>org: "${data.org}"</p>
+      <p>postal: "${data.zip}"</p>
+      <p>timezone: "${data.timeezone}"</p>
+    `;
+
+    ipInfoDiv.innerHTML = formattedInfo;
+    ipInfoDiv.style.display = "block";
+  } catch (error) {
+    console.error("Error fetching IP info:", error);
+    ipInfoDiv.innerHTML = "Error fetching IP info.";
+  }
+});
+
+
+
+    </script>
+</body>
+</html>

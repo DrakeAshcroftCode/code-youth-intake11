@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #f5f5dc; /* beige */
+    color: #000;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: url('arrow.cur'), default;
+
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    cursor: url('Cursor_15.cur'), pointer;
+}
+nav {
+    background-color: #c0c0c0; /* silver */
+    padding: 0.5em 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: start;
+    list-style-type: none;
+}
+
+nav li {
+    background-color: #fff8dc; /* lavender */
+    margin: 0 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid #000;
+    border-radius: 10px 10px 0 0; /* top-left and top-right */
+    position:relative;
+}
+
+nav li::before, nav li::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    width: 50%;
+    border-bottom: 1px solid #000;
+}
+
+nav li::before {
+    left: -1px;
+}
+
+nav li::after {
+    right: -1px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Area */
+main {
+    padding: 2em;
+    border: 2px solid #000;
+    margin: 1em 15%;
+    background-color: #fff8dc; /* cornsilk */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: 2px solid #000;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+}
+
+/* Footer */
+footer {
+    background-color: #c0c0c0; /* silver */
+    padding: 1em 0;
+    text-align: center;
+    border-top: 2px solid #000;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+#mp3-player {
+    width: 300px;
+    border: 2px solid #000;
+    background-color: #c0c0c0;
+    padding: 1em;
+    position: fixed;  /* You can set it to a specific position on the page */
+    bottom: 20px;
+    right: 20px;
+}
+
+.player-header {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5em;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.display {
+    background-color: #f5f5dc;  /* Beige */
+    padding: 1em;
+    margin: 1em 0;
+    border: 1px solid #000;
+}
+
+audio {
+    width: 100%;
+}
+
+.player-buttons button {
+    background-color: #808080;  /* Gray */
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.player-buttons button:hover {
+    background-color: #696969;  /* DimGray */
+}
+
+.sticky-note {
+
+    width: 200px; /* Adjust based on your needs */
+    min-height: 150px; /* Adjust based on your content */
+    background-color: #ffeb3b; /* Yellow color */
+    border: 1px solid #d4af37; /* Gold-ish border for a little depth */
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace; /* Retro font */
+    font-size: 14px;
+    box-shadow: 5px 5px 0 #888888; /* Gray shadow */
+    transform: rotate(-5deg); /* Slight rotation to appear stuck */
+    line-height: 1.5;
+    overflow-wrap: break-word; /* Ensure content doesn't overflow */
+    position: absolute; /* Fixed to the viewport */
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    
+}
+
+
+.sticky-note:before {
+    content: ''; /* This pseudo-element will act as the "peeling" corner */
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(-45deg, #e0cb09 50%, transparent 50%);
+    top: -1px;
+    left: -1px;
+ /* transform: rotate(45deg); */
+    border-right: 1px solid #d4af37;
+    border-bottom: 1px solid #d4af37;
+}
+/* .main-content {
+    margin-right:10%;
+    }    */
+    .sidetextbox {
+        background-color: #ffffff;
+        border-top: 2px solid #7f7f7f;
+        border-left: 2px solid #7f7f7f;
+        border-right: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        padding: 4px 6px;
+        font-family: 'MS Sans Serif', sans-serif;
+        font-size: 12px;
+        color: #000000;
+        width: 300px; /* or whatever width you want */
+        height: 60%; /* or whatever height you want */
+        overflow: auto; /* for scrollability */
+        margin-right:90%;
+        margin-left:10%;
+    }
+    .win95-textbox {
+        background-color: #b6b6b6;
+        border-top: 2px solid #7f7f7f;
+        border-left: 2px solid #7f7f7f;
+        border-right: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        padding: 4px 6px;
+        font-family: 'MS Sans Serif', sans-serif;
+        font-size: 12px;
+        color: #000000;
+        width: 380px; /* or whatever width you want */
+        height: 100px; /* or whatever height you want */
+        overflow: auto; /* for scrollability */
+        margin-right:90%;
+        border-radius:0,0, 15, 0;
+    }
+    
+    .win95-textbox2 {
+        background-color: #b6b6b6;
+        border-top: 2px solid #7f7f7f;
+        border-left: 2px solid #7f7f7f;
+        border-right: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        padding: 4px 6px;
+        font-family: 'MS Sans Serif', sans-serif;
+        font-size: 12px;
+        color: #000000;
+        width: 300px; /* or whatever width you want */
+        height: 100px; /* or whatever height you want */
+        overflow: auto; /* for scrollability */
+        margin-left:60%;
+        margin-right:40%;
+
+    }
+
+
+    .win95-window {
+        border: 2px solid #000;
+        background-color: #C0C0C0; /* Classic gray */
+        width:380px;; /* You can adjust as per your needs */
+        box-shadow: 3px 3px #888888;
+    }
+    .win95-window2 {
+        border: 2px solid #000;
+        background-color: #C0C0C0; /* Classic gray */
+        width:380px;; /* You can adjust as per your needs */
+        box-shadow:3px 3px #888888;
+        margin-top:25px;
+        margin-left:62%;
+        margin-right:28%;
+    }
+    .win95-window3 {
+        border: 2px solid #000;
+        background-color: #C0C0C0; /* Classic gray */
+        width:380px;; /* You can adjust as per your needs */
+        box-shadow: 3px 3px #888888;
+    }
+    .title-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #000080; /* Classic blue */
+        color: #FFF;
+        padding: 2px 5px;
+        font-family: 'Arial', sans-serif;
+        font-size: 12px;
+    }
+    
+    .buttons {
+        display: flex;
+        gap: 2px;
+    }
+    
+    button {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        border: 1px solid #000;
+        background-color: #C0C0C0; 
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s;
+    }
+    
+    button.minimize:hover {
+        background-color: #AAA;
+    }
+    
+    button.maximize:hover {
+        background-color: #AAA;
+    }
+    
+    button.close:hover {
+        background-color: red;
+        color: white;
+    }
+    
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-top: 1px solid #FFF;
+        border-left: 1px solid #FFF;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+    }
+    .drive {
+        position: relative;
+        width: 300px;
+        height: 390px;
+        background-color: #6c6c6c;
+        border: 3px solid black;
+        border-radius: 5px;
+        overflow: hidden;
+        padding-top: 10px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .floppy {
+        position: relative;
+        width: 280px;
+        height: 275px;
+        background-color: #8a2323;
+        border: 1px solid black;
+        border-radius: 3px 15px 3px 3px;
+        box-shadow: 3px 3px;
+        overflow: hidden; /* Add this to hide the part of the shutter outside the floppy */
+    }
+    
+    /* Shutter */
+    .floppy::before {
+        content: "";
+        position: absolute;
+        bottom: 1px;
+        left: 50px;
+        width: 180px;
+        height: 64px;
+        background-color: #c0c0c0;
+        border-top: 1px solid #a0a0a0;
+        border-bottom: 1px solid #a0a0a0;
+    }
+    
+    /* Notch */
+    .floppy::after {
+        content: "";
+        position: absolute;
+        bottom: 1px;
+        left: 20px;
+        width: 20px;
+        height: 10px;
+        background-color: #e0e0e0; /* Same color as the floppy */
+        border: 1px solid #a0a0a0;
+        border-top: none;
+    }
+    
+    .floppy-label {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        width: 240px;
+        height: 160px;
+        background-color: #e0e0e0;
+        border: 1px solid #c0c0c0;
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .confirmation-message {
+        display: none;
+        font-weight: bold;
+
+        text-align: center;
+    }
+    .drive button{
+        width:fit-content;
+        padding:1px;
+    }
+    
+    .drive2 {
+        position: relative;
+        width: 300px;
+        height: 102px;
+        background-color: #6c6c6c;
+        border: 3px solid black;
+        border-radius: 2px;
+        overflow: hidden;
+        padding-top: 10px;
+        z-index: 99;
+    }
+    

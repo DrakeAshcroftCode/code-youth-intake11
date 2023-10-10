@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+<table>
+    <tr>
+        <td>Name:</td>
+        <td><%= formData.name %></td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td><%= formData.address %></td>
+    </tr>
+    <tr>
+        <td>Title:</td>
+        <td><%= formData.title %></td>
+    </tr>
+    <tr>
+        <td>Message:</td>
+        <td><%= formData.message %></td>
+    </tr>
+</table>
+
+</body>
+</html>

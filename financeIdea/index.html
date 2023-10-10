@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracking App</title>
+    <link rel="stylesheet" href="styles/indexstyles.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="views/goals.html">Savings Goals</a></li>
+                <li><a href="#">Transactions</a></li>
+                <li><a href="views/currencyConverter.html">Convertor</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <img src="assets/pngwing.com.png" id="indexImage" >
+
+        <section class="intro">
+            <h1>StashApp</h1>
+            <p><u>Smart saving starts now.</u></p>
+        </section>
+        <input type="button" value="Get Started" id="startButton">
+        <section class="content hide-on-scroll">
+            
+            <h2>Manage your Savings</h2>
+            <p>Stay updated with your savings and ensure you're on the right track with our detailed analytics.</p>
+            <img src="https://placehold.co/600x400">
+        </section>
+        
+        <section class="content hide-on-scroll">
+            <h2>Monitor your Transactions</h2>
+            <p>Keep a keen eye on your expenses. Every penny counts!</p>
+        </section>
+    
+        <section class="content hide-on-scroll">
+            <h2>Currency Convertor</h2>
+            <p>Traveling or making international transactions? Stay updated with current exchange rates.</p>
+        </section>
+    </main>
+    
+    <p id="savedMoneyDisplay"></p>
+    <button id="clearButton">Clear All Data</button>
+ 
+    <script src="js/indexscript.js"></script>
+
+</body>
+</html>

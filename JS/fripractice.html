@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+</head>
+<body>
+    <h1>Submit Your Data</h1>
+    <form id="dataForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+        
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required><br><br>
+        
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Submitted Data:</h2>
+    <pre id="displayData"></pre>
+
+    <script>
+        const dataForm = document.getElementById("dataForm");
+        const displayData = document.getElementById("displayData");
+
+        // Load any previously stored data when the page loads
+        const storedData = JSON.parse(localStorage.getItem("formData")) || {};
+
+        // Function to display the stored data
+        function displayStoredData() {
+            displayData.textContent = JSON.stringify(storedData, null, 2);
+        }
+
+        // Display any previously stored data
+        displayStoredData();
+
+        dataForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(dataForm);
+            const formDataObject = {};
+
+            formData.forEach((value, key) => {
+                formDataObject[key] = value;
+            });
+
+            // Store the submitted data in local storage
+            Object.assign(storedData, formDataObject);
+            localStorage.setItem("formData", JSON.stringify(storedData));
+
+            // Display the stored data
+            displayStoredData();
+        });
+    </script>
+</body>
+</html>

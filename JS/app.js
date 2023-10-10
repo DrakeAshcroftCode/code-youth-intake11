@@ -23,5 +23,4 @@ let myNoun =  "platypus";
 let myVerb = "sprinted";
 let myAdjective = "happy";
 let myAdverb = "quickly";
-
 console.log("The", myAdjective, myNoun, myVerb, "over the hill", myAdverb)
